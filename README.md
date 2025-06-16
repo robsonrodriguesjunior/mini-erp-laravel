@@ -53,8 +53,8 @@ sail npm run dev
 sail artisan migrate
 ```
 
-### Executing Seeders
+### Executing Migration with seeders
 
 ```bash
-php artisan migrate:fresh --seed
+sail artisan migrate:fresh --seed
 ```
