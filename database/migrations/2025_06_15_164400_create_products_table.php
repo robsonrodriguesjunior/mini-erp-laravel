@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('sku')->unique();
             $table->text('description')->nullable();
+            $table->uuid('tenancy_id');
+            $table->foreign('tenancy_id')->references('id')->on('tenancies');
             $table->timestamps();
             $table->softDeletes();
         });

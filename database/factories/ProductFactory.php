@@ -2,6 +2,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Models\Tenancy;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,10 +19,13 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $tenancy = Tenancy::inRandomOrder()->first();
+
         return [
             'name'        => fake()->words(3, true),
             'sku'         => fake()->unique()->regexify('[A-Z]{3}[0-9]{3}'),
             'description' => fake()->paragraph(),
+            'tenancy_id'  => $tenancy->id,
         ];
     }
 }
