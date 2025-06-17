@@ -1,13 +1,13 @@
 <?php
 namespace Database\Seeders;
 
-use App\Models\Client;
+use App\Models\Tenancy;
 use Illuminate\Database\Seeder;
 
-class ClientSeeder extends Seeder
+class TenancySeeder extends Seeder
 {
     public function run(): void
     {
-        Client::factory()->count(50)->create();
+        Tenancy::factory()->count(10)->create();
     }
 }

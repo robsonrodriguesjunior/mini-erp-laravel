@@ -18,6 +18,7 @@ return new class extends Migration
             $table->uuid('state_id')->nullable();
             $table->uuid('country_id')->nullable();
             $table->string('postcode', 10)->nullable();
+            $table->uuid('tenancy_id');
             $table->timestamps();
             $table->softDeletes();
 
@@ -35,6 +36,10 @@ return new class extends Migration
                 ->references('id')
                 ->on('countries')
                 ->onDelete('set null');
+
+            $table->foreign('tenancy_id')
+                ->references('id')
+                ->on('tenancies');
         });
     }
 

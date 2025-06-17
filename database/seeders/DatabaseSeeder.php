@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             StateSeeder::class,
             CitySeeder::class,
+            TenancySeeder::class,
             ClientSeeder::class,
             ProductSeeder::class,
         ]);

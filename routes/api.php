@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\TenancyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,10 +35,12 @@ Route::middleware('auth:sanctum')->group(function () {
         'countries' => CountryController::class,
         'states'    => StateController::class,
         'cities'    => CityController::class,
+        'tenancies' => TenancyController::class,
     ]);
     Route::post('/products/{id}/restore', [ProductController::class, 'restore']);
     Route::post('/clients/{id}/restore', [ClientController::class, 'restore']);
     Route::post('/countries/{id}/restore', [CountryController::class, 'restore']);
     Route::post('/states/{id}/restore', [StateController::class, 'restore']);
     Route::post('/cities/{id}/restore', [CityController::class, 'restore']);
+    Route::post('/tenancies/{id}/restore', [TenancyController::class, 'restore']);
 });
