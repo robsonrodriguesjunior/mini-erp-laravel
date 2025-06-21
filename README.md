@@ -58,3 +58,9 @@ sail artisan migrate
 ```bash
 sail artisan migrate:fresh --seed
 ```
+
+### Clear cache
+
+```bash
+sail artisan optimize:clear
+```

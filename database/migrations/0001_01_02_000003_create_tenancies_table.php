@@ -9,36 +9,18 @@ return new class extends Migration
     {
         Schema::create('tenancies', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->unsignedBigInteger('main_user_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone', 20);
-            $table->string('document')->unique();
-            $table->string('address');
-            $table->uuid('city_id')->nullable();
-            $table->uuid('state_id')->nullable();
-            $table->uuid('country_id')->nullable();
-            $table->string('postcode', 10)->nullable();
+            $table->string('tenant')->unique();
             $table->date('start_date');
             $table->date('end_date');
             $table->string('status');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('city_id')
+            $table->foreign('main_user_id')
                 ->references('id')
-                ->on('cities')
-                ->onDelete('set null');
-
-            $table->foreign('state_id')
-                ->references('id')
-                ->on('states')
-                ->onDelete('set null');
-
-            $table->foreign('country_id')
-                ->references('id')
-                ->on('countries')
-                ->onDelete('set null');
-
+                ->on('users');
         });
     }
 

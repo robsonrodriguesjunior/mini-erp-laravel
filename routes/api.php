@@ -16,6 +16,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/tenant-login', [AuthController::class, 'tenantLogin']);
 
 Route::apiResources([
     'products' => ProductController::class,

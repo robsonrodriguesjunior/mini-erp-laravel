@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Traits\HasAddress;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,22 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tenancy extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes, HasAddress;
+    use HasFactory, HasUuids, SoftDeletes;
 
     public $incrementing = false;
 
     protected $keyType = 'string';
 
     protected $fillable = [
+        'main_user_id',
         'name',
-        'email',
-        'phone',
-        'document',
-        'address',
-        'city_id',
-        'state_id',
-        'country_id',
-        'postcode',
+        'tenant',
         'start_date',
         'end_date',
         'status',
@@ -35,4 +28,8 @@ class Tenancy extends Model
         'end_date'   => 'date',
     ];
 
+    public function mainUser()
+    {
+        return $this->belongsTo(User::class, 'main_user_id');
+    }
 }
